@@ -15,10 +15,10 @@ class City:
 
 def is_number(s):
     try:
-        float(s)
-        return True
+      float(s)
+      return True
     except ValueError:
-        return False
+      return False
 
 
 def parseCountry(citiesHTML,citiesCSV,country):
@@ -30,7 +30,8 @@ def parseCountry(citiesHTML,citiesCSV,country):
     base_url='https://seatemperature.info'
     def handle_starttag(self, tag, attrs):
       if tag == 'a': urls.append(SeaTemperatureHTMLParser.base_url + attrs[0][1])
-    def handle_data(self, data): names.append(data)
+    def handle_data(self, data):
+      if data.strip(): names.append(data)
 
   parser = SeaTemperatureHTMLParser()
   parser.feed(citiesHTML)
